@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wheels.wav-e4de77312a1b4f6fd07aacb04232cf12.sample"
+
+[deps]
+
+source_file="res://robots/wheels.wav"
+source_md5="ed5f1205ff500d1c3feff2301d3bf1c9"
+
+dest_files=[ "res://.import/wheels.wav-e4de77312a1b4f6fd07aacb04232cf12.sample" ]
+dest_md5="ce91d910a34a6ff30a401e7de2ac31b7"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

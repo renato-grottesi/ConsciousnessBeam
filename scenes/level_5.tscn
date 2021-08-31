@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/level_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/level_5.gd" type="Script" id=2]
+[ext_resource path="res://robots/switch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://robots/robot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://robots/cog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tilemap/platform_right.png" type="Texture" id=6]
+[ext_resource path="res://tilemap/platform_left.png" type="Texture" id=7]
+[ext_resource path="res://tilemap/platform_center.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 3 )
+
+[node name="level_5" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+current_level_path = "res://scenes/level_5.tscn"
+
+[node name="switch_r" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 578, 304 )
+
+[node name="switch_l" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 194, 304 )
+
+[node name="tile_map" parent="." index="4"]
+
+tile_data = PoolIntArray( 65537, 10, 0, 65538, 11, 0, 65539, 11, 0, 65540, 11, 0, 65541, 11, 0, 65542, 11, 0, 65543, 11, 0, 65544, 11, 0, 65545, 11, 0, 65546, 11, 0, 65547, 11, 0, 65548, 11, 0, 65549, 11, 0, 65550, 12, 0, 65555, 6, 0, 65556, 2, 0, 131090, 9, 0, 131091, 3, 0, 131092, 0, 0, 196627, 3, 0, 196628, 0, 0, 327679, 5, 0, 262163, 3, 0, 262164, 0, 0, 393215, 4, 0, 327687, 6, 0, 327688, 2, 0, 327689, 2, 0, 327690, 2, 0, 327691, 5, 0, 327699, 3, 0, 327700, 0, 0, 458751, 4, 0, 393216, 2, 0, 393217, 5, 0, 393223, 3, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 4, 0, 393235, 3, 0, 393236, 0, 0, 524287, 4, 0, 458752, 0, 0, 458753, 4, 0, 458759, 3, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 4, 0, 458771, 3, 0, 458772, 0, 0, 589823, 4, 0, 524288, 0, 0, 524289, 4, 0, 524295, 3, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 4, 0, 524307, 3, 0, 524308, 0, 0, 655359, 4, 0, 589824, 0, 0, 589825, 4, 0, 589831, 3, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 4, 0, 589843, 3, 0, 589844, 0, 0, 720895, 4, 0, 655360, 0, 0, 655361, 4, 0, 655362, 2, 0, 655363, 2, 0, 655364, 2, 0, 655365, 2, 0, 655366, 2, 0, 655367, 3, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 4, 0, 655372, 2, 0, 655373, 2, 0, 655374, 2, 0, 655375, 2, 0, 655376, 2, 0, 655377, 2, 0, 655378, 2, 0, 655379, 3, 0, 655380, 0, 0, 786431, 4, 0, 720896, 0, 0, 720897, 4, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 3, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 4, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 3, 0, 720916, 0, 0, 851967, 4, 0, 786432, 0, 0, 786433, 4, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 3, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 4, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 3, 0, 786452, 0, 0 )
+
+[node name="machine" parent="." index="5"]
+
+position = Vector2( 303, 144 )
+
+[node name="robot" parent="." index="10"]
+
+position = Vector2( 290, 29 )
+
+[node name="robot2" parent="." index="11" instance=ExtResource( 4 )]
+
+position = Vector2( 518, 304 )
+
+[node name="robot3" parent="." index="12" instance=ExtResource( 4 )]
+
+position = Vector2( 13, 175 )
+
+[node name="robot4" parent="." index="13" instance=ExtResource( 4 )]
+
+position = Vector2( 580, 61 )
+
+[node name="cog" parent="." index="14"]
+
+position = Vector2( 462, 310 )
+
+[node name="cog2" parent="." index="15" instance=ExtResource( 5 )]
+
+position = Vector2( 59, 182 )
+
+[node name="cog3" parent="." index="16" instance=ExtResource( 5 )]
+
+position = Vector2( 400, 30 )
+
+[node name="platform_h" type="StaticBody2D" parent="." index="20"]
+
+position = Vector2( 420, 160 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="sprite_l_2" type="Sprite" parent="platform_h" index="0"]
+
+position = Vector2( -44, -5 )
+texture = ExtResource( 6 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 24, 0, 8, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="sprite_l" type="Sprite" parent="platform_h" index="1"]
+
+position = Vector2( -32, 0 )
+texture = ExtResource( 7 )
+
+[node name="sprite_r2" type="Sprite" parent="platform_h" index="2"]
+
+position = Vector2( 44, -5 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 24, 0, 8, 32 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sprite_r" type="Sprite" parent="platform_h" index="3"]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Region" ]
+
+[node name="sprite_c" type="Sprite" parent="platform_h" index="4"]
+
+texture = ExtResource( 8 )
+_sections_unfolded = [ "Region" ]
+
+[node name="shape" type="CollisionPolygon2D" parent="platform_h" index="5"]
+
+build_mode = 0
+polygon = PoolVector2Array( 40, -8, 48, -8, 48, 5, -48, 5, -48, -8, -40, -8, -40, -3, 40, -3 )
+
+[node name="platform_v" type="StaticBody2D" parent="." index="21"]
+
+editor/display_folded = true
+position = Vector2( 460, 370 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="sprite_l" type="Sprite" parent="platform_v" index="0"]
+
+position = Vector2( -16, 0 )
+texture = ExtResource( 7 )
+
+[node name="sprite_r" type="Sprite" parent="platform_v" index="1"]
+
+position = Vector2( 16, 0 )
+texture = ExtResource( 6 )
+
+[node name="shape" type="CollisionShape2D" parent="platform_v" index="2"]
+
+shape = SubResource( 1 )
+
+[connection signal="is_working" from="switch_r" to="." method="_on_switch_r_is_working"]
+
+[connection signal="is_working" from="switch_l" to="." method="_on_switch_l_is_working"]
+
+[connection signal="lost_consciousness" from="robot2" to="." method="_on_robots_lost_consciousness"]
+
+[connection signal="on_focus" from="robot2" to="." method="_on_robot_focus"]
+
+[connection signal="lost_consciousness" from="robot3" to="." method="_on_robots_lost_consciousness"]
+
+[connection signal="on_focus" from="robot3" to="." method="_on_robot_focus"]
+
+[connection signal="lost_consciousness" from="robot4" to="." method="_on_robots_lost_consciousness"]
+
+[connection signal="on_focus" from="robot4" to="." method="_on_robot_focus"]
+
+

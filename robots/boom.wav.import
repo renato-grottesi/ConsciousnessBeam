@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boom.wav-db35b38c609acc4547bae656ec8c49b3.sample"
+
+[deps]
+
+source_file="res://robots/boom.wav"
+source_md5="3c669a8a2b27f93100693636c488b73b"
+
+dest_files=[ "res://.import/boom.wav-db35b38c609acc4547bae656ec8c49b3.sample" ]
+dest_md5="c4913045f8517559a10555bbd781aa91"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

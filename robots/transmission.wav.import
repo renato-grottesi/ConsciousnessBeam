@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/transmission.wav-06b01000441ccf2e320942f1f57d6cf7.sample"
+
+[deps]
+
+source_file="res://robots/transmission.wav"
+source_md5="a698e311cf9512a8544518403332a720"
+
+dest_files=[ "res://.import/transmission.wav-06b01000441ccf2e320942f1f57d6cf7.sample" ]
+dest_md5="e62f2d65619320c269d37b21445dc890"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

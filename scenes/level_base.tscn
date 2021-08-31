@@ -1,0 +1,399 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scenes/level_base.gd" type="Script" id=1]
+[ext_resource path="res://tilemap/background.png" type="Texture" id=2]
+[ext_resource path="res://tilemap/tilemap.tres" type="TileSet" id=3]
+[ext_resource path="res://robots/machine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://robots/light.png" type="Texture" id=5]
+[ext_resource path="res://robots/transmission.wav" type="AudioStream" id=6]
+[ext_resource path="res://robots/robot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://robots/cog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://hud/dialog.png" type="Texture" id=9]
+[ext_resource path="res://hud/default.theme" type="Theme" id=10]
+[ext_resource path="res://hud/button_normal.png" type="Texture" id=11]
+[ext_resource path="res://hud/button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://hud/button_focused.png" type="Texture" id=13]
+[ext_resource path="res://music.ogg" type="AudioStream" id=14]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+
+[sub_resource type="Curve" id=2]
+
+min_value = -1.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+
+flags = 4
+width = 2048
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 9.81, 0 )
+initial_velocity = 33.61
+initial_velocity_random = 1.0
+angular_velocity = 8.81417e-43
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+color = Color( 1, 1, 1, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+hue_variation_curve = SubResource( 3 )
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Spread", "Trail" ]
+
+[node name="level_base" type="Node2D"]
+
+script = ExtResource( 1 )
+current_level_path = null
+next_level_path = "res://scenes/main_menu.tscn"
+
+[node name="camera" type="Camera2D" parent="." index="0"]
+
+position = Vector2( 320, 180 )
+anchor_mode = 1
+rotating = true
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="bg" type="Sprite" parent="." index="1"]
+
+modulate = Color( 0.402344, 0.402344, 0.402344, 1 )
+position = Vector2( 330, 150 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 1024 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="tile_map" type="TileMap" parent="." index="2"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65517, 0, 0, -65516, 0, 0, 65535, 0, 0, 0, 0, 0, 19, 0, 0, 20, 0, 0, 131071, 0, 0, 65536, 0, 0, 65555, 0, 0, 65556, 0, 0, 196607, 0, 0, 131072, 0, 0, 131091, 0, 0, 131092, 0, 0, 262143, 0, 0, 196608, 0, 0, 196627, 0, 0, 196628, 0, 0, 327679, 0, 0, 262144, 0, 0, 262163, 0, 0, 262164, 0, 0, 393215, 0, 0, 327680, 0, 0, 327699, 0, 0, 327700, 0, 0, 458751, 0, 0, 393216, 0, 0, 393235, 0, 0, 393236, 0, 0, 524287, 0, 0, 458752, 0, 0, 458771, 0, 0, 458772, 0, 0, 589823, 0, 0, 524288, 0, 0, 524307, 0, 0, 524308, 0, 0, 655359, 0, 0, 589824, 0, 0, 589843, 0, 0, 589844, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 2, 0, 655362, 2, 0, 655363, 2, 0, 655364, 2, 0, 655365, 2, 0, 655366, 2, 0, 655367, 2, 0, 655368, 2, 0, 655369, 2, 0, 655370, 2, 0, 655371, 2, 0, 655372, 2, 0, 655373, 2, 0, 655374, 2, 0, 655375, 2, 0, 655376, 2, 0, 655377, 2, 0, 655378, 2, 0, 655379, 0, 0, 655380, 0, 0, 786431, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 851967, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="machine" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 498, 304 )
+
+[node name="soul" type="Light2D" parent="." index="4"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 5 )
+offset = Vector2( 0, 0 )
+texture_scale = 0.5
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Range", "Shadow", "Transform" ]
+
+[node name="soul_trail" type="Particles2D" parent="." index="5"]
+
+material = SubResource( 1 )
+emitting = false
+amount = 1024
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.1
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 4 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="soul_tween" type="Tween" parent="." index="6"]
+
+repeat = false
+playback_process_mode = 0
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="soul_sound" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 6 )
+volume_db = -8.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="robot" parent="." index="8" instance=ExtResource( 7 )]
+
+position = Vector2( 70, 290 )
+has_focus = true
+
+[node name="cog" parent="." index="9" instance=ExtResource( 8 )]
+
+position = Vector2( 350, 120 )
+
+[node name="hud" type="CanvasLayer" parent="." index="10"]
+
+pause_mode = 2
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="dialog" type="NinePatchRect" parent="hud" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 160.0
+margin_top = 90.0
+margin_right = 480.0
+margin_bottom = 270.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+_sections_unfolded = [ "Axis Stretch", "Patch Margin" ]
+
+[node name="title" type="Label" parent="hud/dialog" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 10 )
+text = "You lost consciousness"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="retry" type="TextureButton" parent="hud/dialog" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 130.0
+margin_right = 148.0
+margin_bottom = 162.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="text" type="Label" parent="hud/dialog/retry" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 10 )
+text = "Retry"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Theme" ]
+
+[node name="quit" type="TextureButton" parent="hud/dialog" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 170.0
+margin_top = 130.0
+margin_right = 298.0
+margin_bottom = 162.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="text" type="Label" parent="hud/dialog/quit" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 10 )
+text = "Quit"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Theme" ]
+
+[node name="music" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 14 )
+volume_db = -12.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="game_over_tween" type="Tween" parent="." index="12"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="is_working" from="machine" to="." method="_on_machine_is_working"]
+
+[connection signal="tween_completed" from="soul_tween" to="." method="_on_soul_tween_completed"]
+
+[connection signal="lost_consciousness" from="robot" to="." method="_on_robots_lost_consciousness"]
+
+[connection signal="on_focus" from="robot" to="." method="_on_robot_focus"]
+
+[connection signal="pressed" from="hud/dialog/retry" to="." method="_on_retry_pressed"]
+
+[connection signal="pressed" from="hud/dialog/quit" to="." method="_on_quit_pressed"]
+
+[connection signal="tween_completed" from="game_over_tween" to="." method="_on_game_over_tween_completed"]
+
+
